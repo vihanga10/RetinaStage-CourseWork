@@ -1,0 +1,10 @@
+web/node_modules/
+web/dist/
+web/*.tsbuildinfo
+server/__pycache__/
+**/__pycache__/
+*.pyc
+server/.venv/
+models/
+.DS_Store
+*.zip
