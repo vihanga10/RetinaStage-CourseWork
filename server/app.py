@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field
 
 from guide import answer
 from model_service import ModelService
+from retinal_guard import validate_fundus_upload
 
 MAX_BYTES = 10 * 1024 * 1024
 TTL_SECONDS = 30 * 60
@@ -39,14 +40,31 @@ def health():
         else "Install the Colab model and calibration record in models/.")}
 
 
-@app.post("/api/analyze")
-async def analyze(file: UploadFile = File(...)):
-    if file.content_type not in {"image/jpeg", "image/png"}:
-        raise HTTPException(400, "Choose a JPEG or PNG retinal photograph.")
-    data = await file.read(MAX_BYTES + 1)
-    await file.close()
+async def read_checked_upload(file: UploadFile) -> bytes:
+    try:
+        if file.content_type not in {"image/jpeg", "image/png"}:
+            raise HTTPException(400, "Choose a JPEG or PNG retinal photograph.")
+        data = await file.read(MAX_BYTES + 1)
+    finally:
+        await file.close()
     if not data or len(data) > MAX_BYTES:
         raise HTTPException(400, "Choose a nonempty image no larger than 10 MB.")
+    try:
+        validate_fundus_upload(data)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc)) from exc
+    return data
+
+
+@app.post("/api/check-upload")
+async def check_upload(file: UploadFile = File(...)):
+    await read_checked_upload(file)
+    return {"accepted": True}
+
+
+@app.post("/api/analyze")
+async def analyze(file: UploadFile = File(...)):
+    data = await read_checked_upload(file)
     if not service.ready:
         raise HTTPException(503, "Install the saved Colab model and calibration file first.")
     try:

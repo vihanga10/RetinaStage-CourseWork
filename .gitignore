@@ -6,5 +6,6 @@ server/__pycache__/
 *.pyc
 server/.venv/
 models/
+web/public/demo_examples/
 .DS_Store
 *.zip
