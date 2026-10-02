@@ -113,5 +113,6 @@ class ModelService:
                 "confidence": float(blur_probabilities[blur_grade]),
                 "changed": blur_grade != grade,
             },
+            "upload_screen": "Passed an illustrative APTOS-style fundus pattern check; not proof of image identity.",
             "notice": "Research prototype only. Not a medical diagnosis.",
         }
