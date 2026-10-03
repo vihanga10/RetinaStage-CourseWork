@@ -1,0 +1,46 @@
+{
+  "source": "APTOS 2019",
+  "split": "train",
+  "images": [
+    {
+      "id_code": "002c21358ce6",
+      "diagnosis": 0
+    },
+    {
+      "id_code": "0097f532ac9f",
+      "diagnosis": 0
+    },
+    {
+      "id_code": "0024cdab0c1e",
+      "diagnosis": 1
+    },
+    {
+      "id_code": "00cb6555d108",
+      "diagnosis": 1
+    },
+    {
+      "id_code": "00a8624548a9",
+      "diagnosis": 2
+    },
+    {
+      "id_code": "00b74780d31d",
+      "diagnosis": 2
+    },
+    {
+      "id_code": "0104b032c141",
+      "diagnosis": 3
+    },
+    {
+      "id_code": "03c85870824c",
+      "diagnosis": 3
+    },
+    {
+      "id_code": "001639a390f0",
+      "diagnosis": 4
+    },
+    {
+      "id_code": "0083ee8054ee",
+      "diagnosis": 4
+    }
+  ]
+}
