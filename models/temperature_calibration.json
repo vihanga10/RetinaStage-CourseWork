@@ -1,0 +1,11 @@
+{
+  "subset": "calibration",
+  "images": 174,
+  "preprocessing": "P2",
+  "temperature": 0.7924604320120947,
+  "nll_before": 0.559256374835968,
+  "nll_after": 0.5459612011909485,
+  "split_manifest_sha256": "2c54046885a9aee2004a0e151176d71d089d9ab3afb12f447080a63d92838d9c",
+  "model_sha256": "09f075a84b4c85ebbe1746e491bcb79c7835e21b9d3718f9865277d122e62729",
+  "test_images_used": false
+}
